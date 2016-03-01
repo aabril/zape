@@ -5,9 +5,13 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-That's my own nodejs Skeleton, based on awesome [Daftmonk/fullstack-demo](https://github.com/DaftMonk/fullstack-demo) , [BriskJS](https://github.com/niallobrien/briskjs) and [Hackaton Starter](https://github.com/sahat/hackathon-starter)
+That's my own nodejs Skeleton, based on awesome:
+- [Daftmonk/fullstack-demo](https://github.com/DaftMonk/fullstack-demo) 
+- [BriskJS](https://github.com/niallobrien/briskjs) 
+- [Hackaton Starter](https://github.com/sahat/hackathon-starter)
 
-![](http://picaros83.free.fr/tintin/photos/milou-courrone.jpg)
+<img src="http://picaros83.free.fr/tintin/photos/milou-courrone.jpg" width="200px">
+
 
 ## Installation
 
