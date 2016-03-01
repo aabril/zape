@@ -1,0 +1,23 @@
+{
+  "name": "milou",
+  "version": "0.0.1",
+  "description": "Another NodeJS Skeleton.",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/aabril/milou.git"
+  },
+  "keywords": [
+    "skeleton",
+    "nodejs",
+    "express",
+    "api"
+  ],
+  "author": "Albert Abril",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aabril/milou/issues"
+  },
+  "homepage": "https://github.com/aabril/milou#readme"
+}
