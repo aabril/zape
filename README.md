@@ -5,9 +5,9 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-One to two paragraph statement about your product and what it does.
+That's my own nodejs Skeleton, based on awesome [Daftmonk/fullstack-demo](https://github.com/DaftMonk/fullstack-demo) , [BriskJS](https://github.com/niallobrien/briskjs) and [Hackaton Starter](https://github.com/sahat/hackathon-starter)
 
-![](header.png)
+![](http://picaros83.free.fr/tintin/photos/milou-courrone.jpg)
 
 ## Installation
 
@@ -38,26 +38,16 @@ npm test
 
 ## Release History
 
-* 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
 * 0.0.1
     * Work in progress
 
 ## Meta
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+Albert Abril – [@desmondo](https://twitter.com/desmondo) – albert.abril@gmail.com
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+Distributed under the MIT license. See ``LICENSE`` for more information.
 
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+[https://github.com/aabril/milou](https://github.com/aabril/milou)
 
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/datadog-metrics
