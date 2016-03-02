@@ -2,9 +2,16 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 const ThingSchema = new Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  active: { type: Boolean , default: false },
+  name: { type: String , required: true },
+  info: { type: String , required: true }
+}, { timestamps: true });
+
+ThingSchema.set('toJSON', {
+  virtuals: false,
+  transform: (doc, ret, options) => {
+    delete ret.__v;
+  }
 });
 
 export default mongoose.model('Thing', ThingSchema)
