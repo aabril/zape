@@ -6,7 +6,7 @@ import bunyan from 'bunyan'
 let app = express();
 app.server = http.createServer(app);
 
-let log = bunyan.createLogger({name: 'play', level: 'info'});
+let log = bunyan.createLogger({name: 'run', level: 'info'});
 
 app.use('/', (req, res) => res.send("hello world"));
 

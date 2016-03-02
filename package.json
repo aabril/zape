@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Another NodeJS Skeleton.",
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js ./server/app.js | ./node_modules/bunyan/bin/bunyan ",
+    "start": "./node_modules/nodemon/bin/nodemon.js ./server/app.js | ./node_modules/bunyan/bin/bunyan -o short",
     "lint": "./node_modules/eslint/bin/eslint.js server/*"
   },
   "repository": {
