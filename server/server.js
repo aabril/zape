@@ -1,13 +1,11 @@
 import http from 'http'
 import express from 'express'
 import env from './config/environments/dev.json'
-import bunyan from 'bunyan'
+import log from './logger'
 import routes from './routes'
 
 let app = express();
 app.server = http.createServer(app);
-
-let log = bunyan.createLogger({name: 'run', level: 'info'});
 
 routes(app);
 
