@@ -1,13 +1,13 @@
-import Router from 'express'
+import router from 'express'
 import * as controller from './things.controller'
 
-const router = Router();
+const Router = router();
 
-router.get('/', controller.index);
-router.get('/:id', controller.show);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.patch('/:id', controller.update);
-router.delete('/:id', controller.destroy);
+Router.get('/', controller.index);
+Router.get('/:id', controller.show);
+Router.post('/', controller.create);
+Router.put('/:id', controller.update);
+Router.patch('/:id', controller.update);
+Router.delete('/:id', controller.destroy);
 
-export default router;
+export default Router;
