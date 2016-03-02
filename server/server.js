@@ -7,6 +7,8 @@ import routes from './routes'
 let app = express();
 app.server = http.createServer(app);
 
+app.get('/', (req,res) => { res.status(200).send("static content"); });
+
 routes(app);
 
 app.server.listen(env.port, env.hostname, () => {
