@@ -2,7 +2,7 @@ import http from 'http';
 import express from 'express';
 import env from './config/environments/dev.json'
 
-var app = express();
+let app = express();
 app.server = http.createServer(app);
 
 app.use('/', (req, res) => res.send("hello world"));
