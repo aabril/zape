@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import model from "./things.model"
+import Thing from "./things.model"
 
 function handleError(res, err) {
   return res.send(500, err);
@@ -33,7 +33,7 @@ export function update(req, res) {
     if (err) { return handleError(res, err); }
     if(!thing) { return res.send(404); }
     const updated = _.merge(thing, req.body);
-    updated.save(function (err) {
+    return updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, thing);
     });
@@ -44,7 +44,7 @@ export function destroy(req, res) {
   Thing.findById(req.params.id, function (err, thing) {
     if(err) { return handleError(res, err); }
     if(!thing) { return res.send(404); }
-    thing.remove(function(err) {
+    return thing.remove(function(err) {
       if(err) { return handleError(res, err); }
       return res.send(204);
     });

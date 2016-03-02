@@ -5,8 +5,13 @@ import env from './config/environments/dev.json'
 import log from './logger'
 import routes from './routes'
 
-let app = express();
+import bodyParser from 'body-parser'
+
+const app = express();
 app.server = http.createServer(app);
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 mongoose.connect(env.mongo.uri, env.mongo.options);
 
