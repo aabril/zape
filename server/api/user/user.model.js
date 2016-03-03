@@ -1,0 +1,17 @@
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
+  active: {type: Boolean , default: false},
+  name: {type: String , required: true},
+  info: {type: String , required: true}
+}, {timestamps: true});
+
+UserSchema.set('toJSON', {
+  virtuals: false,
+  transform: (doc, ret, options) => {
+    delete ret.__v;
+  }
+});
+
+export default mongoose.model('User', UserSchema)
