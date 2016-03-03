@@ -15,8 +15,16 @@ app.use(bodyParser.json());
 
 mongoose.connect(env.mongo.uri, env.mongo.options);
 
-app.get('/', (req,res) => { res.status(200).send("static content"); });
+app.get('/', (req,res) => { 
+  res.status(200).send("static content"); 
+});
+
 routes(app);
+
+app.get('*', function(req, res){
+  res.status(404).send('404 PAGE NOT FOUND');
+});
+
 
 app.server.listen(env.port, env.hostname, () => {
   log.info('Express server listening on %d, in %s mode', env.port, app.get('env'));
