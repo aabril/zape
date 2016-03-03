@@ -1,5 +1,5 @@
 import router from 'express'
-import * as controller from './things.controller'
+import * as controller from './thing.controller'
 
 const Router = router();
 

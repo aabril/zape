@@ -1,4 +1,4 @@
-import things from './api/things'
+import things from './api/thing'
 
 let routes = (app) => {
   app.use('/api/things', things);

@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import Thing from "./things.model"
+import Thing from "./thing.model"
 
 function handleError(res, err) {
   return res.send(500, err);
