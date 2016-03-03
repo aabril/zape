@@ -2,13 +2,13 @@ import _ from 'lodash'
 import Thing from "./thing.model"
 
 function handleError(res, err) {
-  return res.send(500, err);
+  return res.status(500).send(err);
 }
 
 export function list(req, res) {
   Thing.find(function (err, things) {
     if(err) { return handleError(res, err); }
-    return res.json(200, things);
+    return res.status(200).json(things);
   });
 }
 
@@ -16,14 +16,14 @@ export function item(req, res) {
   Thing.findById(req.params.id, function (err, thing) {
     if(err) { return handleError(res, err); }
     if(!thing) { return res.send(404); }
-    return res.json(thing);
+    return res.status(200).json(thing);
   });
 }
 
 export function create(req, res) {
   Thing.create(req.body, function(err, thing) {
     if(err) { return handleError(res, err); }
-    return res.json(201, thing);
+    return res.status(201).json(thing);
   });
 }
 
@@ -35,7 +35,7 @@ export function update(req, res) {
     const updated = _.merge(thing, req.body);
     return updated.save(function (err) {
       if (err) { return handleError(res, err); }
-      return res.json(200, thing);
+      return res.status(200).json(thing);
     });
   });
 }
@@ -46,7 +46,7 @@ export function destroy(req, res) {
     if(!thing) { return res.send(404); }
     return thing.remove(function(err) {
       if(err) { return handleError(res, err); }
-      return res.send(204);
+      return res.status(204).send();
     });
   });
 }
