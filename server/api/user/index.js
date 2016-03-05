@@ -4,10 +4,10 @@ import * as controller from './user.controller'
 const Router = router();
 
 Router.get('/', controller.list);
-// Router.get('/:id', controller.item);
-// Router.post('/', controller.create);
-// Router.put('/:id', controller.update);
-// Router.patch('/:id', controller.update);
-// Router.delete('/:id', controller.destroy);
+Router.post('/', controller.create);
+Router.get('/me', controller.me);
+Router.get('/:id', controller.item);
+Router.delete('/:id', controller.destroy);
+// Router.put('/:id/password', controller.changePassword);
 
 export default Router;

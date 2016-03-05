@@ -12,18 +12,27 @@ export function list(req, res) {
   });
 }
 
-export function item(req, res) {
-  User.findById(req.params.id, function (err, user) {
+export function create(req, res) {
+  User.create(req.body, function(err, user) {
+    if(err) { return handleError(res, err); }
+    return res.status(201).json(user);
+  });
+}
+
+export function me(req, res) {
+  let userId = "";
+  User.findById(userId, function (err, user) {
     if(err) { return handleError(res, err); }
     if(!user) { return res.send(404); }
     return res.status(200).json(user);
   });
 }
 
-export function create(req, res) {
-  User.create(req.body, function(err, user) {
+export function item(req, res) {
+  User.findById(req.params.id, function (err, user) {
     if(err) { return handleError(res, err); }
-    return res.status(201).json(user);
+    if(!user) { return res.send(404); }
+    return res.status(200).json(user);
   });
 }
 
