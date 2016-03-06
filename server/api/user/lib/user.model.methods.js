@@ -1,3 +1,6 @@
+import crypto from 'crypto'
+import bcrypt from 'bcrypt'
+
 export default function(UserSchema){
   UserSchema.methods = {
     /**
@@ -32,7 +35,17 @@ export default function(UserSchema){
       if (!password || !this.salt) return '';
       var salt = new Buffer(this.salt, 'base64');
       return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+    },
+
+    verifyPassword: function(candidatePassword, cb) {
+      bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if (err) {
+          return cb(err);
+        }
+        cb(null, isMatch);
+      });
     }
+
   };
 
 }

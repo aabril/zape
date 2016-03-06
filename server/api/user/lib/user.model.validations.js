@@ -1,3 +1,6 @@
+const authTypes = ['github', 'twitter', 'facebook', 'google'];
+
+
 export default function(UserSchema){
   // Validate empty email
   UserSchema
