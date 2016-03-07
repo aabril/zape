@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import User from "./user.model"
+import jwt from 'jsonwebtoken'
 
 function handleError(res, err) {
   return res.status(500).send(err);

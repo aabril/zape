@@ -11,8 +11,8 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   name: String,
   email: { 
-  	type: String, 
-  	lowercase: true
+    type: String, 
+    lowercase: true
   },
   role: {
     type: String,
@@ -30,6 +30,9 @@ UserSchema.set('toJSON', {
   virtuals: false,
   transform: (doc, ret, options) => {
     delete ret.__v;
+    delete ret.hashedPassword;
+    delete ret.salt;
+    delete ret.role;
   }
 });
 

@@ -10,7 +10,7 @@ export default function(UserSchema){
      * @return {Boolean}
      * @api public
      */
-    authenticate: function(plainText) {
+    authenticate: (plainText) => {
       return this.encryptPassword(plainText) === this.hashedPassword;
     },
 
@@ -20,7 +20,7 @@ export default function(UserSchema){
      * @return {String}
      * @api public
      */
-    makeSalt: function() {
+    makeSalt: () => {
       return crypto.randomBytes(16).toString('base64');
     },
 
@@ -31,19 +31,10 @@ export default function(UserSchema){
      * @return {String}
      * @api public
      */
-    encryptPassword: function(password) {
-      if (!password || !this.salt) return '';
-      var salt = new Buffer(this.salt, 'base64');
+    encryptPassword: (password) => {
+      if (!password || !this.salt){ return ''; }
+      let salt = new Buffer(this.salt, 'base64');
       return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
-    },
-
-    verifyPassword: function(candidatePassword, cb) {
-      bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) {
-          return cb(err);
-        }
-        cb(null, isMatch);
-      });
     }
 
   };

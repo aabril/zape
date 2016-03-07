@@ -15,20 +15,14 @@ export default function(User, config) {
     });
   });
 
-  const passportCb = (email, password, done) => {
-
-    let userFindOneCb = function (err, user) {
-
-      console.log(user);
-
+  let localStrategyCb = (email, password, done) => {
+    User.findOne({email}, (err, user) => {
       if (err) { return done(err); }
       if (!user) {  return done(null, false, {message: 'This email is not registered.'}); }
       if (!user.authenticate(password)) { return done(null, false, {message: 'This password is not correct.'}); }
       return done(null, user);
-    }
-
-    User.findOne({email: email}, userFindOneCb);
+    })
   };
 
-  passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'}, passportCb));
-};
+  passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'}, localStrategyCb));
+}
