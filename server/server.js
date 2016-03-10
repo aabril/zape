@@ -16,10 +16,14 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 
+app.set('views', 'client')
+app.set('view engine', 'jade');
+
 mongoose.connect(env.mongo.uri, env.mongo.options);
 
 app.get('/', (req,res) => { 
-  res.status(200).send("static content"); 
+  // res.status(200).send("static content"); 
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
 
 routes(app);
