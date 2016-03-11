@@ -23,7 +23,7 @@ mongoose.connect(env.mongo.uri, env.mongo.options);
 
 app.get('/', (req,res) => { 
   // res.status(200).send("static content"); 
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
+  res.render('index', {title: 'Hey', message: 'Hello there!'});
 });
 
 routes(app);
