@@ -32,18 +32,18 @@
     "bunyan": "^1.7.1",
     "express": "^4.13.4",
     "http": "0.0.0",
-    "jsonwebtoken": "^5.7.0",
+    "jsonwebtoken": "^7.0.1",
     "lodash": "^4.6.0",
     "mongoose": "^4.4.5",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^5.0.0",
-    "eslint": "^2.2.0",
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.0.1",
     "eslint-plugin-babel": "^3.1.0",
     "icedfrisby": "^0.2.4",
-    "joi": "^8.0.4",
+    "joi": "^9.0.0",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1"
   }
