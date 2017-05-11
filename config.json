@@ -1,0 +1,5 @@
+{
+  "PORT": 8080,
+  "HOSTNAME": "127.0.0.1",
+  "MONGO_URI": "mongodb://localhost/milou_dev"
+}
