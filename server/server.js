@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 app.set('views', 'client')
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 mongoose.connect(env.mongo.uri, env.mongo.options);
 
