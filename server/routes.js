@@ -4,7 +4,7 @@ import authRequest from './auth'
 import notFoundRequest from './notFound'
 
 const routes = (app) => {
-  app.use('/', indexRequest);
+  app.get('/', indexRequest);
   app.use('/api', apiRequest);
   app.use('/auth', authRequest);
   app.get('*', notFoundRequest);

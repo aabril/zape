@@ -6,10 +6,14 @@ import expressConfig from './expressConfig'
 
 const app = express();
 
-routes(app);
 expressConfig(app)
+routes(app);
 
-const PORT = process.env.PORT || config.PORT;
+const PORT = process.env.PORT || config.dev.PORT;
 app.listen(PORT, () => {
-  log.info('Express server listening on %d', PORT);
+  if(process.env.NODE_ENV==="dev") {
+    log.info('Express server listening on %d', PORT);
+  }
 });
+
+export default app
