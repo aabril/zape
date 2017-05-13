@@ -11,7 +11,7 @@ routes(app);
 
 const PORT = process.env.PORT || config.dev.PORT;
 app.listen(PORT, () => {
-  if(process.env.NODE_ENV==="dev") {
+  if(process.env.NODE_ENV==="dev" || config.dev.NODE_ENV==='dev') {
     log.info('Express server listening on %d', PORT);
   }
 });

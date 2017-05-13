@@ -1,13 +1,13 @@
 {
   "dev" : {
     "NODE_ENV": "dev",
-    "PORT": 8080,
+    "PORT": 3000,
     "HOSTNAME": "127.0.0.1",
     "MONGO_URI": "mongodb://localhost/milou_dev"
   },
   "test" : {
     "NODE_ENV": "test",
-    "PORT": 8081,
+    "PORT": 3001,
     "HOSTNAME": "127.0.0.1",
     "MONGO_URI": "mongodb://localhost/milou_test"
   }
