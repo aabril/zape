@@ -4,7 +4,7 @@
   "description": "Another NodeJS Skeleton.",
   "scripts": {
     "start": "npm run watch",
-    "watch": "nodemon --watch server --watch test --exec 'npm run serve'",
+    "dev": "nodemon --watch server --watch test --exec 'npm run serve'",
     "serve": "babel-node ./server/server.js | ./node_modules/bunyan/bin/bunyan -o short",
     "lint": "eslint server/*",
     "test": "ava"
@@ -27,27 +27,24 @@
   "homepage": "https://github.com/aabril/milou#readme",
   "dependencies": {
     "bcrypt": "^1.0.2",
-    "body-parser": "^1.15.0",
-    "bunyan": "^1.7.1",
-    "express": "^4.13.4",
-    "http": "0.0.0",
-    "jsonwebtoken": "^7.0.1",
-    "lodash": "^4.6.0",
-    "mongoose": "^4.4.5",
+    "body-parser": "^1.17.2",
+    "bunyan": "^1.8.10",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.10.4",
+    "nconf": "^0.8.4",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "pug": "^2.0.0-rc.1"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-preset-es2015": "^6.24.1",
     "eslint": "^3.0.1",
     "eslint-plugin-babel": "^4.1.1",
     "nodemon": "^1.11.0",
-    "supertest": "^3.0.0",
-    "to-type": "^1.1.0"
+    "supertest": "^3.0.0"
   },
   "ava": {
     "require": [
