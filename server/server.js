@@ -1,17 +1,13 @@
 import express from 'express'
 import config from '../config.json'
 import routes from './routes'
-import expressConfig from './expressConfig'
+import middlewares from './middlewares'
 import bunyan from 'bunyan'
-import nconf from 'nconf'
-
-nconf.argv().env().file({ file: '../config.json' });
-
 
 const log = bunyan.createLogger({name: 'run', level: 'info'});
 const app = express();
 
-expressConfig(app)
+middlewares(app)
 routes(app);
 
 const PORT = process.env.PORT || config.dev.PORT;
