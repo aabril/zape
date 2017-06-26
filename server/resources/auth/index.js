@@ -1,16 +1,11 @@
-import { Router } from 'express'
+import router from 'express'
 import passport from 'passport'
 import User from '../user/user.model'
 import config from '../../../config'
-import local from './local'
-import passportLocal from './passport/local'
+import * as controller from './auth.controller'
 
-const router = new Router();
+const Router = router();
 
-passportLocal(User, config);
-router.use('/local', local);
-router.get('*', (req, res) => {
-  return res.status(404).json({ msg: 'not found' })
-});
+Router.post('/', passport.authenticate('local'), controller.login);
 
 export default Router;
