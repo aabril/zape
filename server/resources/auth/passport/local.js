@@ -1,10 +1,9 @@
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
-import User from '../../api/user/user.model'
+import User from '../../user/user.model'
 
 
 export default function(User, config) {
-
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
@@ -15,7 +14,7 @@ export default function(User, config) {
     });
   });
 
-  let localStrategyCb = (email, password, done) => {
+  const localStrategyCb = (email, password, done) => {
     User.findOne({email}, (err, user) => {
       if (err) { return done(err); }
       if (!user) {  return done(null, false, {message: 'This email is not registered.'}); }

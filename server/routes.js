@@ -1,5 +1,6 @@
-import apiRequest from './controllers/api'
-import authRequest from './controllers/auth'
+import authResource from './resources/auth'
+import userResource from './resources/user'
+import thingResource from './resources/thing'
 
 const indexRequest = (req, res) => { 
   return res.status(200).json({title: 'Hey', message: 'Hello there!'});
@@ -11,8 +12,9 @@ const notFoundRequest = (req, res) => {
 
 const routes = (app) => {
   app.get('/', indexRequest);
-  app.use('/api', apiRequest);
-  app.use('/auth', authRequest);
+  app.use('/auth', authResource);
+  app.use('/users', userResource);
+  app.use('/things', thingResource);
   app.get('*', notFoundRequest);
 };
 
