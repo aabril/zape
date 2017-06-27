@@ -6,6 +6,7 @@ import * as controller from './auth.controller'
 
 const Router = router();
 
-Router.post('/', passport.authenticate('local'), controller.login);
+Router.post('/login', passport.authenticate('local'), controller.login);
+Router.post('/register', controller.register);
 
 export default Router;
