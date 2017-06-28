@@ -1,13 +1,15 @@
 import express from 'express'
 import config from '../config.json'
 import routes from './routes'
-import middlewares from './middlewares'
+import middlewares from './services/express/middlewares'
+import db from './services/db'
 import bunyan from 'bunyan'
 
 const log = bunyan.createLogger({name: 'run', level: 'info'});
 const app = express();
 
 middlewares(app)
+db()
 routes(app);
 
 const PORT = process.env.PORT || config.PORT;
