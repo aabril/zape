@@ -10,11 +10,13 @@ const app = express();
 middlewares(app)
 routes(app);
 
-const PORT = process.env.PORT || config.dev.PORT;
+const PORT = process.env.PORT || config.PORT;
+const NODE_ENV = process.env.NODE_ENV==="dev" || config.NODE_ENV==='dev' 
+
 app.listen(PORT, () => {
-  if(process.env.NODE_ENV==="dev" || config.dev.NODE_ENV==='dev') {
+  if(NODE_ENV) {
     log.info('Express server listening on %d', PORT);
   }
-});
+})
 
 export default app

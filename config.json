@@ -1,16 +1,7 @@
 {
-  "dev" : {
-    "NODE_ENV": "dev",
-    "PORT": 3000,
-    "HOSTNAME": "127.0.0.1",
-    "MONGO_URI": "mongodb://localhost/milou_dev",
-    "SESSION_SECRET": "12341234123412342"
-  },
-  "test" : {
-    "NODE_ENV": "test",
-    "PORT": 3001,
-    "HOSTNAME": "127.0.0.1",
-    "MONGO_URI": "mongodb://localhost/milou_test",
-    "SESSION_SECRET": "12341234123412342"
-  }
+  "NODE_ENV": "dev",
+  "PORT": 3000,
+  "HOSTNAME": "127.0.0.1",
+  "MONGO_URI": "mongodb://localhost/milou_dev",
+  "SESSION_SECRET": "12341234123412342"
 }

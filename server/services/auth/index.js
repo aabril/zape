@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import expressJwt from 'express-jwt';
 import compose from 'composable-middleware';
 import User from '../../resources/user/user.model';
-const validateJwt = expressJwt({secret: config.dev.SESSION_SECRET});
+const validateJwt = expressJwt({secret: config.SESSION_SECRET});
 
 
 function validateToken (req, res, next) {

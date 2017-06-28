@@ -7,6 +7,6 @@ export default (app) => {
   app.use(bodyParser.urlencoded({extended: false}));
   app.use(bodyParser.json());
   app.use(passport.initialize());
-  const MONGO_URI = process.env.MONGO_URI || config.dev.MONGO_URI;
+  const MONGO_URI = process.env.MONGO_URI || config.MONGO_URI;
   mongoose.connect(MONGO_URI);
 }
