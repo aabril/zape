@@ -7,6 +7,7 @@ import compose from 'composable-middleware';
 import User from '../../resources/user/user.model';
 const validateJwt = expressJwt({secret: config.SESSION_SECRET});
 
+mongoose.Promise = Promise
 
 function validateToken (req, res, next) {
   if(req.query && req.query.hasOwnProperty('access_token')){
@@ -54,7 +55,7 @@ function hasRole(roleRequired) {
  * Returns a jwt token signed by the app secret
  */
 function signToken(id) {
-  return jwt.sign({_id: id}, config.SESSION_SECRET, {expiresInMinutes: 60*5});
+  return jwt.sign({_id: id}, config.SESSION_SECRET, {expiresIn: 60*60*5});
 }
 
 /**
@@ -67,7 +68,58 @@ function setTokenCookie(req, res) {
   return res.redirect('/');
 }
 
+// ToDo: as a promise
+// function registerLocalUser(email, password, name) {
+//   return new Promise(function(resolve, reject) {
+//     const newUserData = {
+//       email: email,
+//       password: password,
+//       name: name
+//     }
+
+//     let newUser = new User(newUserData)
+//     newUser.provider = 'local'
+//     newUser.role     = 'user'
+//     console.log(newUser)
+
+//     newUser.save( (err, user) => {
+//       if (err) reject(err);
+//       user.token = signToken(user._id)
+//       resolve(user);
+//     })
+//   });
+// }
+
+function registerLocalUser(email, password, name, res) {
+    const newUserData = {
+      email: email,
+      password: password,
+      name: name
+    }
+    let newUser = new User(newUserData)
+    newUser.provider = 'local'
+    newUser.role     = 'user'
+    newUser.save( (err, user) => {
+      if (err){
+        let errOutput;
+        if(err.code && err.code===11000) {
+          errOutput = { msg: 'user already registered' }
+        }else{
+          errOutput = err
+        }
+        return res.json(errOutput)
+      }
+      user.token = signToken(user._id)
+      const userOutput = {
+        email: user.email
+      }
+      return res.json(userOutput)
+    })
+}
+
+
 export {isAuthenticated};
 export {hasRole};
 export {signToken};
 export {setTokenCookie};
+export {registerLocalUser};
