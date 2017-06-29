@@ -6,22 +6,7 @@ export default (test, server, supertest) => {
     const res = await supertest(server).get('/users')
     t.is(res.status, 200);
     t.is(Array.isArray(res.body), true)
-    t.is(res.body.length, 0)
+    t.is(res.body.length, 1) // an user has been already registered in auth test
   })
-
-  test.serial('things:POST a new "user" object 1', async t => {
-    const data = {
-      name: 'DUMMY',
-      info: 'dummy information',
-      active: false
-    }
-    const res = await supertest(server).post('/things').send(data)
-    t.is(res.status, 201);
-    t.is(typeof res.body, 'object')
-    t.is(res.body.name, 'DUMMY')
-    t.is(res.body.info, 'dummy information')
-    thing1 = res.body;
-  })
-
 
 }

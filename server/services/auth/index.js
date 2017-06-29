@@ -25,7 +25,6 @@ function findUserAndRegisterOnRequest (req, res, next){
   });
 }
 
-
 /**
  * Attaches the user object to the request if authenticated
  * Otherwise returns 403
@@ -109,6 +108,7 @@ function registerLocalUser(email, password, name, res) {
         }
         return res.json(errOutput)
       }
+      
       user.token = signToken(user._id)
       const userOutput = {
         email: user.email
