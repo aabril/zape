@@ -16,16 +16,26 @@ export default (test, server, supertest) => {
     t.is(res.body[0].email, 'user@mail.com')
   })
 
-  // Commented out because sometimes the delay returns undefined
-  // test.serial('auth:POST register same user should display a error', async t => {
-  //   const data = {
-  //     email: "user@mail.com",
-  //     password: 'password',
-  //     name: 'new user'
-  //   }
-  //   const res = await supertest(server).post('/auth/register').send(data)
-  //   t.is(res.status, 200);
-  //   console.log(res.body)
-  //   t.is(res.body.msg, 'user already registered')
-  // })
+  test.serial('auth:POST login', async t => {
+    const data = {
+      email: "user@mail.com",
+      password: 'password',
+    }
+    const res = await supertest(server).post('/auth/login').send(data)
+    t.is(res.status, 200);
+    t.is(typeof res.body, 'object')
+    t.is(res.body.hasOwnProperty('token'), true)
+  })
+
+  test.serial('auth:POST register same user should display a error', async t => {
+    const data = {
+      email: "user@mail.com",
+      password: 'password',
+      name: 'new user'
+    }
+    const res = await supertest(server).post('/auth/register').send(data)
+    t.is(res.status, 200);
+    t.is(res.body.msg, 'user already registered')
+  })
+
 }

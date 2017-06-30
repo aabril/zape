@@ -3,7 +3,7 @@ import LocalStrategy from 'passport-local'
 import User from '../../user/user.model'
 
 
-export default function(User, config) {
+export default function(User) {
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
