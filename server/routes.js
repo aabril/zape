@@ -1,5 +1,6 @@
 import authResource from './resources/auth'
 import userResource from './resources/user'
+import imageResource from './resources/image'
 import thingResource from './resources/thing'
 
 const indexRequest = (req, res) => { 
@@ -14,6 +15,7 @@ const routes = (app) => {
   app.get('/', indexRequest);
   app.use('/auth', authResource);
   app.use('/users', userResource);
+  app.use('/images', imageResource);
   app.use('/things', thingResource);
   app.get('*', notFoundRequest);
 };

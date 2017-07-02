@@ -6,17 +6,18 @@ process.env.MONGO_URI = process.env.TEST_MONGO_URI || config.TEST_MONGO_URI
 process.env.MONGO_URI = process.env.MONGO_URI + '-' + process.pid
 
 import mongoose from 'mongoose'
-const server = require('../server/server').default
 import supertest from 'supertest'
-const test = require('ava')
+import {test} from 'ava'
+const server = require('../server/server').default
 
-import thingsSpec from '../server/resources/thing/thing.spec'
 import authSpec from '../server/resources/auth/auth.spec'
 import usersSpec from '../server/resources/user/user.spec'
+import imagesSpec from '../server/resources/image/image.spec'
+import thingsSpec from '../server/resources/thing/thing.spec'
 
 mongoose.Promise = Promise;
 
-test('root:get', async t => {
+test.serial('root:get', async t => {
   t.plan(1);
   const res = await supertest(server).get('/')
   t.is(res.status, 200);
@@ -24,6 +25,7 @@ test('root:get', async t => {
 
 authSpec(test, server, supertest)
 usersSpec(test, server, supertest)
+imagesSpec(test, server, supertest)
 thingsSpec(test, server, supertest)
 
 test.after.always('guaranteed cleanup', async t => {
