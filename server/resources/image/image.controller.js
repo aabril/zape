@@ -23,10 +23,13 @@ export function item(req, res) {
 
 export function create(req, res) {
   const imagefile = req.files.filter(function(image){ return image.fieldname === "imagefile" })[0];
+  const otherfiles =  req.files.filter(function(image){ return image.fieldname != "imagefile" });
   if(!imagefile){ return res.json({msg:'file imagefile required'}) }
 
+  // Delete FS other files
+
   const newImage = {
-    imagefile: imagefile
+    imagefile: imagefile,
   }
 
   Image.create(newImage, function(err, image) {
