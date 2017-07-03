@@ -22,52 +22,17 @@ export function item(req, res) {
 }
 
 export function create(req, res) {
-  // if (!req.files) return res.status(400).send('No files were uploaded.')
-  // const imagefile = req.files.imagefile
+  const imagefile = req.files.filter(function(image){ return image.fieldname === "imagefile" })[0];
+  if(!imagefile){ return res.json({msg:'file imagefile required'}) }
 
-  // Image.create(req.body, function(err, image) {
-  //   if(err) { return handleError(res, err); }
-  //   return res.status(201).json({image, imagefile});
-  // });
-  // console.log(req.files);
-  // console.log(req.file);
-  // return res.status(200).json({})
+  const newImage = {
+    imagefile: imagefile
+  }
 
-    const multerStorage =  multer.diskStorage({
-      destination: (req, file, callback) => {
-        
-        console.log('req.body', req.body)
-        console.log('file', file)
-
-        let path = "./uploads";
-        switch(req.body.type)
-        {
-            case 'link': path += '/link'; break;
-            case 'PDF': path += '/PDF'; break;
-            case 'video': path += '/video'; break;
-            case 'audio': path += '/audio'; break;
-            case 'image': path += '/image/' + req.body.folder; break;
-        }
-        callback(null, path);
-      },
-      filename: (req, file, callback) => {
-          callback(null, file.originalname);
-      }
-    });
-
-    const onFileUploadCompleteCb = (req, file, callback) => {
-      const asset = new Asset(req.body);
-      asset.save(function(err, asset){
-          if(err) return next(err);
-          return next();
-      });
-    }
-
-    multer({ storage: multerStorage, onFileUploadComplete: onFileUploadCompleteCb})
-      .single('imagefile')(req, res, (err) => {
-        if(err) return res.send("Err: "+ err);
-        res.status(201).json({});
-    });
+  Image.create(newImage, function(err, image) {
+    if(err) { return handleError(res, err); }
+    return res.status(201).json(image);
+  });
 }
 
 export function update(req, res) {
