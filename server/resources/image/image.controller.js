@@ -22,20 +22,19 @@ export function item(req, res) {
 }
 
 export function create(req, res) {
-  const imagefile = req.files.filter(function(image){ return image.fieldname === "imagefile" })[0];
-  const otherfiles =  req.files.filter(function(image){ return image.fieldname != "imagefile" });
-  if(!imagefile){ return res.json({msg:'file imagefile required'}) }
+  const upload = multer({ dest: 'uploads/' }).single('imagefile')
+  upload(req, res, (err) =>{
+    if(err) return res.json(err)
 
-  // Delete FS other files
+    const newImage = {
+      imagefile: req.file,
+    }
 
-  const newImage = {
-    imagefile: imagefile,
-  }
-
-  Image.create(newImage, function(err, image) {
-    if(err) { return handleError(res, err); }
-    return res.status(201).json(image);
-  });
+    Image.create(newImage, function(err, image) {
+      if(err) { return handleError(res, err); }
+      return res.status(201).json(image);
+    });
+  })
 }
 
 export function update(req, res) {
