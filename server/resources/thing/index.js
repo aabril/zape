@@ -7,8 +7,8 @@ const Router = router();
 Router.get('/', controller.list);
 Router.get('/:id', controller.item);
 Router.post('/', isAuthenticated(), controller.create);
-Router.put('/:id', controller.update);
-Router.patch('/:id', controller.update);
-Router.delete('/:id', controller.destroy);
+Router.put('/:id', isAuthenticated(), controller.update);
+Router.patch('/:id', isAuthenticated(), controller.update);
+Router.delete('/:id', isAuthenticated(), controller.destroy);
 
 export default Router;
