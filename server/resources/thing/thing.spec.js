@@ -1,5 +1,5 @@
 export default (test, server, supertest) => {
-  let thing1, thing2, user1_token;
+  let thing1, thing2, user1;
 
 
   test.serial('things > register a new user', async t => {
@@ -22,7 +22,7 @@ export default (test, server, supertest) => {
     t.is(res.status, 200);
     t.is(typeof res.body, 'object')
     t.is(res.body.hasOwnProperty('token'), true)
-    user1_token = res.body.token
+    user1 = res.body
   })
 
   test.serial('things:GET get all with an empty array as a result', async t => {
@@ -38,13 +38,14 @@ export default (test, server, supertest) => {
 
     const postData = {
       name: 'DUMMY 1',
-      info: 'dummy information 1'
+      info: 'dummy information 1', 
+      user: user1.user_id
     }
 
     const res = await supertest(server)
       .post('/things')
       .send(postData)
-      .set('Authorization', 'Bearer ' + user1_token)
+      .set('Authorization', 'Bearer ' + user1.token)
 
     t.is(res.status, 201);
     t.is(typeof res.body, 'object')
@@ -59,13 +60,14 @@ export default (test, server, supertest) => {
 
     const postData = {
       name: 'DUMMY 2',
-      info: 'dummy information 2'
+      info: 'dummy information 2',
+      user: user1.user_id
     }
 
     const res = await supertest(server)
       .post('/things')
       .send(postData)
-      .set('Authorization', 'Bearer ' + user1_token)
+      .set('Authorization', 'Bearer ' + user1.token)
 
     t.is(res.status, 201);
     t.is(typeof res.body, 'object')
@@ -88,7 +90,7 @@ export default (test, server, supertest) => {
 
     const res = await supertest(server)
       .del('/things/' + thing2._id)
-      .set('Authorization', 'Bearer ' + user1_token)
+      .set('Authorization', 'Bearer ' + user1.token)
 
     t.is(res.status, 204)
     t.is(typeof res.body, 'object')
@@ -112,8 +114,8 @@ export default (test, server, supertest) => {
     const res = await supertest(server)
       .put('/things/' + thing1._id)
       .send(putData)
-      .set('Authorization', 'Bearer ' + user1_token)
-      
+      .set('Authorization', 'Bearer ' + user1.token)
+
     t.is(res.status, 200);
     t.is(res.body.name, 'DUMMY 1 MODIFIED')
     t.is(res.body.info, 'dummy information 1 MODIFIED')
