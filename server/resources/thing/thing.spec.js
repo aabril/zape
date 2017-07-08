@@ -78,11 +78,13 @@ export default (test, server, supertest) => {
   })
 
   test.serial('things:GET all with the two last "thing" added', async t => {
-    t.plan(3);
+    t.plan(5);
     const res = await supertest(server).get('/things')
     t.is(res.status, 200);
     t.is(Array.isArray(res.body), true)
     t.is(res.body.length, 2)
+    t.is(res.body[0].user, user1.user_id)
+    t.is(res.body[1].user, user1.user_id)
   })
 
   test.serial('things:DELETE last item', async t => {
