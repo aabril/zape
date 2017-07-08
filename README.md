@@ -1,20 +1,16 @@
-# Milou
-> Another NodeJS Skeleton.
+# Zape
+> Things app API 
 
-NodeJS Skeleton based on awesome:
-- [Daftmonk/fullstack-demo](https://github.com/DaftMonk/fullstack-demo) 
-- [BriskJS](https://github.com/niallobrien/briskjs) 
-- [Hackaton Starter](https://github.com/sahat/hackathon-starter)
+Forked from [Milou : aabril/milou](http://github.com/aabril/milou)
 
-<img src="http://picaros83.free.fr/tintin/photos/milou-courrone.jpg" width="200px">
-
+<img src="https://raw.githubusercontent.com/aabril/zape/master/uploads/zape.png" width="200px">
 
 ## Installation
 
 OS X & Linux:
 
 ```
-git clone http://github.com/aabril/milou
+git clone http://github.com/aabril/zape
 npm install
 ```
 
